@@ -61,14 +61,13 @@ def change_format():
 
     D1 = timedelta(days=1)
     P1 = 10
-    TMAX1 = 41
-    TMIN1 = 72
     estaciones = []
 
     lines = [line.rstrip('\n') for line in open(join(par.DIR_DAT,
              par.AEMETPT), 'r')]
     for line in lines[1:]:
         words = line.split(';')
+        
         if words[0] not in estaciones:
             print(words[0])
             estaciones.append(words[0])
@@ -79,8 +78,6 @@ def change_format():
         nd = monthrange(int(words[1]), int(words[2]))[1]
         d0 = date(int(words[1]), int(words[2]), 1)
         ip = P1
-        itmax = TMAX1
-        itmin = TMIN1
 
         # P
         for i in range(nd):
@@ -96,6 +93,8 @@ def change_format():
             ip += 1
 
         # TMAX
+        itmax = 41
+        d0 = date(int(words[1]), int(words[2]), 1)
         for i in range(nd):
             if len(words[itmax]) > 0:
                 ftmax.write('{0}\t{1}\t{2}\n'.format(words[0],
@@ -107,6 +106,8 @@ def change_format():
             itmax += 1
 
         # TMIN
+        itmin = 72
+        d0 = date(int(words[1]), int(words[2]), 1)
         for i in range(nd):
             if len(words[itmin]) > 0:
                 ftmin.write('{0}\t{1}\t{2}\n'.format(words[0],

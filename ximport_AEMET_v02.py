@@ -2,8 +2,7 @@
 
 """
 lee el fichero de P, Tmax y Tmin diaria de un único fichero de AEMET que
-    contiene todos tipos de datos
-"""
+    contiene todos tipos de datos1"""
 
 if __name__ == "__main__":
 
